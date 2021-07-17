@@ -63,11 +63,11 @@
 (map! :leader :desc "Return to previous tab" [left] #'centaur-tabs-backward)
 (map! :leader :desc "Advance to next tab" [right] #'centaur-tabs-forward)
 
-;; Optional autoformatters. Most of them are already on by default, but those
-;; which are not must be set here.
-;; Check list of autoformatters at: https://github.com/hlissner/doom-emacs/tree/develop/modules/editor/format
+;; Format is enabled for each mode individually for more control
+;; Format documentation: https://github.com/hlissner/doom-emacs/tree/develop/modules/editor/format
 ;; Python
-(add-hook 'before-save-hook 'py-isort-before-save)
+(add-hook 'python-mode-hook #'format-all-mode)
+(add-hook 'before-save-hook #'py-isort-before-save)
 
 ;; centaur-tabs styles
 (setq centaur-tabs-show-navigation-buttons t
