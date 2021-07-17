@@ -54,10 +54,17 @@
 ;; they are implemented.
 
 ; Personal settings
+
 ;; Activate TypeScript support
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 
-;; Optional autoformatters (some of them are already activated by default)
+;; Keybinds
+(map! :leader :desc "Return to previous tab" [left] #'centaur-tabs-backward)
+(map! :leader :desc "Advance to next tab" [right] #'centaur-tabs-forward)
+
+;; Optional autoformatters. Most of them are already on by default, but those
+;; which are not must be set here.
+;; Check list of autoformatters at: https://github.com/hlissner/doom-emacs/tree/develop/modules/editor/format
 ;; Python
 (add-hook 'before-save-hook 'py-isort-before-save)
