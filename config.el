@@ -24,7 +24,7 @@
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
+;; `load-theme' function.
 (setq doom-theme 'doom-one)
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -68,3 +68,7 @@
 ;; Check list of autoformatters at: https://github.com/hlissner/doom-emacs/tree/develop/modules/editor/format
 ;; Python
 (add-hook 'before-save-hook 'py-isort-before-save)
+
+;; centaur-tabs styles
+(setq centaur-tabs-show-navigation-buttons t
+      centaur-tabs-cycle-scope 'default)
