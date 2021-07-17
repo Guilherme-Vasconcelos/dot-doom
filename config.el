@@ -57,3 +57,7 @@
 ;; Activate TypeScript support
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
+
+;; Optional autoformatters (some of them are already activated by default)
+;; Python
+(add-hook 'before-save-hook 'py-isort-before-save)
