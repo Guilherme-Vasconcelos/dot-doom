@@ -27,17 +27,14 @@
 ;; `load-theme' function.
 (setq doom-theme 'doom-nord)
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 (unless (file-exists-p org-directory)
   (make-directory org-directory))
 (setq org-agenda-files (list org-directory))
 
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
+(setq confirm-kill-emacs nil)
 (setq display-line-numbers-type t)
-
+(setq kill-whole-line t)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -56,15 +53,16 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-; Personal settings
-
 ;; Activate TypeScript support
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 
 ;; Keybinds
-(map! :leader :desc "Return to previous tab" [left] #'centaur-tabs-backward)
-(map! :leader :desc "Advance to next tab" [right] #'centaur-tabs-forward)
+(defhydra hydra-centaur-tabs (global-map "C-c" :color red)
+  "Change centaur-tab"
+  ("<left>" centaur-tabs-backward "←")
+  ("<right>" centaur-tabs-forward "→"))
+
 
 ;; Format is enabled for each mode individually for more control
 ;; Format documentation: https://github.com/hlissner/doom-emacs/tree/develop/modules/editor/format
