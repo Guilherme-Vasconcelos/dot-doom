@@ -1,13 +1,6 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
-
-
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets.
-;; (setq user-full-name "John Doe"
-;;       user-mail-address "john@doe.com")
+;; You do not need to run 'doom sync' after modifying this file.
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -21,21 +14,7 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function.
-(setq doom-theme 'doom-nord)
-
-(setq org-directory "~/org/")
-(unless (file-exists-p org-directory)
-  (make-directory org-directory))
-(setq org-agenda-files (list org-directory))
-
-(setq confirm-kill-emacs nil)
-(setq display-line-numbers-type t)
-(setq kill-whole-line t)
-
+;;
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -53,23 +32,36 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; Activate TypeScript support
-(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
+; Themes and appearance
+(setq doom-theme 'doom-nord)
+(setq centaur-tabs-show-navigation-buttons t
+      centaur-tabs-cycle-scope 'default)
 
-;; Keybinds
+; Directories and files
+(setq org-directory "~/org/")
+(unless (file-exists-p org-directory)
+  (make-directory org-directory))
+(setq org-agenda-files (list org-directory))
+
+; Keybinds
+;;; FIXME: doom-leader-alt-key is not working here.
 (defhydra hydra-centaur-tabs (global-map "C-c" :color red)
   "Change centaur-tab"
   ("<left>" centaur-tabs-backward "←")
   ("<right>" centaur-tabs-forward "→"))
 
+; Programming languages
+;; Activate TS support
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 
-;; Format is enabled for each mode individually for more control
-;; Format documentation: https://github.com/hlissner/doom-emacs/tree/develop/modules/editor/format
-;; Python
+;; Autoformat (must be enabled for each mode individually for more control).
+;; See more: https://github.com/hlissner/doom-emacs/tree/develop/modules/editor/format
+;;; Python
 (add-hook 'python-mode-hook #'format-all-mode)
 (add-hook 'before-save-hook #'py-isort-before-save)
 
-;; centaur-tabs styles
-(setq centaur-tabs-show-navigation-buttons t
-      centaur-tabs-cycle-scope 'default)
+; Misc variables
+(setq confirm-kill-emacs nil)
+(setq display-line-numbers-type t)
+(setq kill-whole-line t)
