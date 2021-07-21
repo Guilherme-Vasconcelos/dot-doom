@@ -63,7 +63,7 @@
 
 ;;; Misc variables
 (setq confirm-kill-emacs nil)  ; Remove exit confirmation
-(setq display-line-numbers-type t)  ; Display line numbers
+(setq display-line-numbers-type 'relative)  ; Display line numbers. Replace 'relative with t if using absolute lines.
 (setq kill-whole-line t)  ; Kill the entire line when using C-k at the beginning
 (setq projectile-enable-caching nil)  ; Disable caching to ensure all files are shown (do not use for big projects)
 (setq projectile-indexing-method 'alien)  ; Use alien indexing for best performance (Does not work on Windows)
