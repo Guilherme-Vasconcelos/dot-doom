@@ -50,6 +50,13 @@
   ("<left>" centaur-tabs-backward "←")
   ("<right>" centaur-tabs-forward "→"))
 
+;; C-x k is the default Emacs keybind to kill current buffer, but it asks for
+;; confirmation (because it uses kill-buffer instead of kill-this-buffer).
+;; Also, pressing C-x multiple times is bad.
+(defhydra hydra-kill-buffer (global-map "C-x" :color red)
+  "Kill current buffer"
+  ("k" kill-this-buffer "Kill buffer"))
+
 ;;;; Programming languages
 ;; Activate TS support
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
