@@ -69,8 +69,12 @@
 (add-hook 'before-save-hook #'py-isort-before-save)
 
 ;;;; Misc variables
-(setq confirm-kill-emacs nil)  ; Remove exit confirmation
+(setq confirm-kill-emacs nil)  ; Remove exit confirmation.
 (setq display-line-numbers-type 'relative)  ; Display line numbers. Replace 'relative with t if using absolute lines.
-(setq kill-whole-line t)  ; Kill the entire line when using C-k at the beginning
-(setq projectile-enable-caching nil)  ; Disable caching to ensure all files are shown (do not use for big projects)
-(setq projectile-indexing-method 'alien)  ; Use alien indexing for best performance (Does not work on Windows)
+(setq kill-whole-line t)  ; Kill the entire line when using C-k at the beginning.
+(setq projectile-enable-caching nil)  ; Disable caching to ensure all files are shown (do not use for big projects).
+(setq projectile-indexing-method 'alien)  ; Use alien indexing for best performance (does not work on Windows).
+
+;;;; External packages (not included with Doom. See packages.el)
+(use-package! duolingo-streak)
+(run-with-timer 1800 3600 #'duolingo-streak--verify)
