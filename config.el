@@ -44,6 +44,10 @@
 (setq org-agenda-files (list org-directory))
 
 ;;;; Keybinds
+(map!
+ :desc "Avy go to char with 2 chars"
+ :g "C-:" #'avy-goto-char-2)
+
 ;; FIXME: doom-leader-alt-key is not working here.
 (defhydra hydra-centaur-tabs (global-map "C-c" :color red)
   "Change centaur-tab"
