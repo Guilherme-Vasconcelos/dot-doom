@@ -64,7 +64,8 @@
 ;;;; Programming languages
 ;; Activate TS support
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-tsx-mode))
+(setq web-mode-enable-auto-indentation nil)
 
 ;;; Autoformat (must be enabled for each mode individually for more control).
 ;;; See more: https://github.com/hlissner/doom-emacs/tree/develop/modules/editor/format
@@ -82,3 +83,17 @@
 ;;;; External packages (not included with Doom. See packages.el)
 (use-package! duolingo-streak)
 (run-with-timer 1800 3600 #'duolingo-streak--verify)
+
+;;;; Custom functions
+;;; Formatters (try to use autoformat on save instead if possible, but that may be too noisy on some projects)
+(defun eslint-fix-file-and-revert ()
+  "Fix the current buffer with eslint and revert it."
+  (interactive)
+  (shell-command (concat "eslint --fix " (buffer-file-name)))
+  (revert-buffer t t))
+
+(defun black-fix-file-and-revert ()
+  "Fix the current buffer with black autoformatter and revert it."
+  (interactive)
+  (shell-command (concat "black " (buffer-file-name)))
+  (revert-buffer t t))
