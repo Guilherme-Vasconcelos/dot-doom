@@ -97,3 +97,7 @@
   (interactive)
   (shell-command (concat "black " (buffer-file-name)))
   (revert-buffer t t))
+
+;;;; Custom hooks
+;;; Dark mode with pdf-tools
+(add-hook! 'pdf-view-mode-hook #'pdf-view-themed-minor-mode)
