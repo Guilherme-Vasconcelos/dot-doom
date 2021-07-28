@@ -79,6 +79,7 @@
 (setq kill-whole-line t)  ; Kill the entire line when using C-k at the beginning.
 (setq projectile-enable-caching nil)  ; Disable caching to ensure all files are shown (do not use for big projects).
 (setq projectile-indexing-method 'alien)  ; Use alien indexing for best performance (does not work on Windows).
+(setq highlight-indent-guides-responsive 'top) ; Highlight current indentation.
 
 ;;;; External packages (not included with Doom. See packages.el)
 (use-package! duolingo-streak)
