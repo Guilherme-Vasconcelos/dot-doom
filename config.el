@@ -32,8 +32,10 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;;;; Themes and appearance
+;;;; Appearance
+;;; Theme
 (setq doom-theme 'doom-nord)
+;;; Tabs style
 (setq centaur-tabs-show-navigation-buttons t
       centaur-tabs-cycle-scope 'default)
 
@@ -102,3 +104,14 @@
 ;;;; Custom hooks
 ;;; Dark mode with pdf-tools
 (add-hook! 'pdf-view-mode-hook #'pdf-view-themed-minor-mode)
+
+;;;; My custom patches (submit PR later if possible)
+;;; FIXME: dtrt-indent is not adjusting these variables, which are used by typescript-tsx-mode
+;;; when editing .tsx files. Since most .tsx files use 2 spaces indentation, I'll leave it
+;;; like that for now.
+;;; I could not make it work by adding them to `dtrt-indent-hook-mapping-list' because there
+;;; are 2 variables.
+(after! web-mode
+  (add-hook! 'typescript-tsx-mode-hook
+    (setq web-mode-markup-indent-offset 2
+          web-mode-code-indent-offset 2)))
