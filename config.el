@@ -83,9 +83,6 @@
 (setq projectile-indexing-method 'alien)  ; Use alien indexing for best performance (does not work on Windows).
 (setq highlight-indent-guides-responsive 'top) ; Highlight current indentation.
 
-;;;; Misc global modes
-(+global-word-wrap-mode)
-
 ;;;; External packages (not included with Doom. See packages.el)
 (use-package! duolingo-streak)
 (run-with-timer 1800 3600 #'duolingo-streak--verify)
